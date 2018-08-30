@@ -70,7 +70,7 @@ export class View extends Control.Component<{}> {
    */
   public constructor() {
     super({});
-    this.form.addEventListener('submit', Class.bindCallback(this.submitHandler));
+    this.form.addEventListener('submit', this.submitHandler.bind(this));
   }
 
   /**
