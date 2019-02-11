@@ -14,10 +14,10 @@
     "@singleware/ui-control": "^1.0.10"
   },
   "devDependencies": {
-    "@types/node": "^10.9.3",
+    "@types/node": "^10.12.24",
     "google-closure-compiler": "^20180805.0.0",
-    "less": "^3.8.1",
-    "prettier": "^1.14.2",
+    "less": "^3.9.0",
+    "prettier": "^1.16.4",
     "typescript": "^2.9.2"
   },
   "prettier": {
@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "node ./backend/release/main.js",
-    "make-all": "npm run make-backend && npm run make-frontend && npm run make-bundle && npm run minify",
+    "build": "npm run make-backend && npm run make-frontend && npm run make-bundle && npm run minify",
     "make-backend": "tsc --project ./backend",
     "make-frontend": "npm run make-frontend-ts && npm run make-frontend-less",
     "make-frontend-ts": "tsc --project ./frontend",

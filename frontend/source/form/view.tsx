@@ -18,6 +18,7 @@ export class View extends Control.Component<{}> {
   @Class.Private()
   private submitHandler(event: Event): void {
     event.preventDefault();
+    console.log('Form submitted');
   }
 
   /**
@@ -25,7 +26,7 @@ export class View extends Control.Component<{}> {
    */
   @Class.Private()
   private form: HTMLFormElement = (
-    <form class="form">
+    <form class="form" onSubmit={this.submitHandler.bind(this)}>
       <div class="field">
         <label>First name:</label>
         <input type="text" />
@@ -70,7 +71,7 @@ export class View extends Control.Component<{}> {
    */
   public constructor() {
     super({});
-    this.form.addEventListener('submit', this.submitHandler.bind(this));
+    // Some initialization here...
   }
 
   /**

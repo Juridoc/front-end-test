@@ -11,7 +11,7 @@ import * as Form from './form';
  * Default handler class.
  */
 @Class.Describe()
-export class Handler {
+export class Handler extends Class.Null {
   /**
    * Default action.
    * @param match Matched route.

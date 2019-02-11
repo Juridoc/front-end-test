@@ -11,26 +11,26 @@ A partir de um ambiente pré estruturado, seu objetivo é corrigir e concluir a 
 - A logomarca da juridoc precisa ser ajustada com as dimensões 200x80
 - O título do campo também deve estar no placeholder do input
 - Os títulos devem estar na parte superior do input
-- A margem entre os campos e o formulário deve ser 1rem
+- O espaço entre os campos e a borda do formulário deve ser 1rem
 - A margem entre os campos é muito grande, reduza para 0.5rem
 - Os campos devem estar alinhados à esquerda e preenchendo 100% do formulário
 - O botão deve estar alinhado à direita
-- A margem superior entre o botão e o último campo deve ser 1rem
-- O campo para confirmação de senha não existe, adicione um
+- O espaço entre o botão e o último campo deve ser 1rem
+- O campo para confirmação de senha não existe, adicione
 
 #### Validação dos dados
 
 - Os respectivos tipos de cada campo devem corresponder ao formato de dados esperado. (password, email, tel, etc...)
 - Os campos "primeiro nome" e "último nome" são obrigatórios
 - O campo "nome de usuário" deve aceitar somente caracteres a-z e 0-9 e no mínimo 6 caracteres
-- O campo "telefone" deve aceitar apenas caracteres 0-9 e traço e espaço
-- O campo "email" deve aceitar apenas emails com o domínio juridoc.com.br
+- O campo "telefone" deve aceitar apenas caracteres 0-9 e hífen e um único espaço entre dois números
+- O campo "email" deve aceitar apenas emails com o domínio juridoc.io
 - O campo "senha" deve conter pelo menos 6 caracteres
 - O campo "confirmar senha" deve possuir o mesmo valor do campo "senha"
 
 #### Armazenamento dos dados
 
-Após definir as regras de validação do formulário no método submitHandler, faça um `POST` com objeto JSON contendo as informações do formulário para o endepoint: `https://test.juridoc.com.br/register`, utilize o método fetch nativo do JavaScript.
+Após definir as regras de validação do formulário no método submitHandler, faça um `POST` com objeto JSON contendo as informações do formulário para o endepoint: `https://test.juridoc.io/register`, utilize o método fetch nativo do JavaScript.
 
 **JSON Exemplo**
 
@@ -39,7 +39,7 @@ Após definir as regras de validação do formulário no método submitHandler, 
   "firstName": "Someone",
   "lastName": "Someone",
   "phone": "11 1234-4321",
-  "email": "someone@juridoc.com.br",
+  "email": "someone@juridoc.io",
   "username": "someone",
   "password": "000000"
 }
@@ -47,8 +47,8 @@ Após definir as regras de validação do formulário no método submitHandler, 
 
 #### Bônus
 
-- Melhorar os aspectos visuais gerais (tamanho dos campos, cores, sombras, bordas)
-- Fazer o commit do grupo das alterações que são relacionadas entre si em vez de um commit gigante
+- Melhorar os aspectos visuais gerais (tamanho dos campos, cores, sombras, bordas) para um estilo agradável e moderno.
+- Fazer o commit do grupo das alterações que são relacionadas entre si em vez de um único commit gigante.
 
 ## Ambiente
 
@@ -64,4 +64,4 @@ Após definir as regras de validação do formulário no método submitHandler, 
 - NPM
 - Git
 - CSS/LESS
-- HTML/TSX/JSX
+- HTML/TSX

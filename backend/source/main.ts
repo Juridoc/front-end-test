@@ -8,6 +8,9 @@ import * as Default from './handler';
 // Main application instance.
 const application = new Backend.Main({});
 
+// Setup the HTTP logger.
+application.addLogger(Backend.Loggers.Console);
+
 // Setup the HTTP server.
 application.addService(Backend.Services.Server, {
   port: 8080,
@@ -15,10 +18,10 @@ application.addService(Backend.Services.Server, {
 });
 
 // Setup the HTTP handler.
-const settings = {
-  strict: true,
-  directory: './frontend/public/',
-  index: 'index.html',
+application.addHandler(Default.Handler, {
+  strictType: true,
+  baseDirectory: './frontend/public/',
+  indexFile: `index.html`,
   types: {
     html: 'text/html',
     css: 'text/css',
@@ -31,9 +34,7 @@ const settings = {
     eot: 'application/vnd.ms-fontobject',
     ttf: 'application/font-sfnt'
   }
-};
+});
 
-application.addHandler(Default.Handler, settings);
-
-// Starts the listening.
+// Start listening.
 application.start();

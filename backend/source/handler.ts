@@ -15,7 +15,7 @@ export class Handler extends Backend.Handlers.File.Default {
    * @param match Matched route.
    */
   @Class.Public()
-  @Backend.Main.Processor({ path: '!', environment: { methods: 'GET' } })
+  @Backend.Processor({ path: '!', environment: { methods: 'GET' } })
   public async exceptionResponse(match: Backend.Match): Promise<void> {
     await super.exceptionResponse(match);
   }
@@ -25,7 +25,7 @@ export class Handler extends Backend.Handlers.File.Default {
    * @param match Matched route.
    */
   @Class.Public()
-  @Backend.Main.Processor({ path: '/', exact: false, environment: { methods: 'GET' } })
+  @Backend.Processor({ path: '/', exact: false, environment: { methods: 'GET' } })
   public async defaultResponse(match: Backend.Match): Promise<void> {
     await super.defaultResponse(match);
   }
