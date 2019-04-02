@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2018 Juridoc
+/*
+ * Copyright (C) 2018-2019 Juridoc
  * Default handler.
  */
 import * as Class from '@singleware/class';

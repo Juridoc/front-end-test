@@ -1,18 +1,36 @@
-/**
- * Copyright (C) 2018 Juridoc
+/*
+ * Copyright (C) 2018-2019 Juridoc
  * Frontend client.
  */
+import * as Class from '@singleware/class';
 import * as Frontend from '@singleware/frontend';
 import * as Default from './handler';
 
-// Main application instance.
-export const application = new Frontend.Main({});
+/**
+ * Application class.
+ */
+@Class.Describe()
+class Application extends Frontend.Main {
+  /**
+   * Default constructor.
+   */
+  constructor() {
+    super({
+      title: {
+        text: 'Juridoc',
+        separator: ' - '
+      }
+    });
+    // Setup the browser service.
+    this.addService(new Frontend.Services.Client({}));
 
-// Setup the browser service.
-application.addService(Frontend.Services.Client, {});
+    // Setup the page handler.
+    this.addHandler(Default.Handler);
 
-// Setup all page handlers.
-application.addHandler(Default.Handler);
+    // Start rendering.
+    this.start();
+  }
+}
 
-// Starts actions.
-application.start();
+// Start the application
+const instance = new Application();
