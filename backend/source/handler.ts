@@ -1,4 +1,4 @@
-/*
+/*!
  * Copyright (C) 2018-2019 Juridoc
  * Default handler.
  */
@@ -16,7 +16,7 @@ export class Handler extends Backend.Handlers.File.Default {
    */
   @Class.Public()
   @Backend.Processor({ path: '!', environment: { methods: 'GET' } })
-  public async exceptionResponse(match: Backend.Match): Promise<void> {
+  public async exceptionResponse(match: Backend.Types.Match): Promise<void> {
     await super.exceptionResponse(match);
   }
 
@@ -26,7 +26,7 @@ export class Handler extends Backend.Handlers.File.Default {
    */
   @Class.Public()
   @Backend.Processor({ path: '/', exact: false, environment: { methods: 'GET' } })
-  public async defaultResponse(match: Backend.Match): Promise<void> {
+  public async defaultResponse(match: Backend.Types.Match): Promise<void> {
     await super.defaultResponse(match);
   }
 }

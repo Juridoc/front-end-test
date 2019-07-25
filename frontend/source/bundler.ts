@@ -1,4 +1,4 @@
-/*
+/*!
  * Copyright (C) 2018-2019 Juridoc
  */
 import * as Bundler from '@singleware/bundler';

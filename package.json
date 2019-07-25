@@ -34,6 +34,6 @@
     "make-frontend-ts": "tsc --project ./frontend",
     "make-frontend-less": "lessc -x ./frontend/source/main.less > ./frontend/public/index.min.css",
     "make-bundle": "node ./frontend/release/bundler.js",
-    "minify": "npx google-closure-compiler --language_in ECMASCRIPT_NEXT --language_out ECMASCRIPT_2017 --js frontend/release/index.js > frontend/public/index.min.js"
+    "minify": "npx google-closure-compiler --platform=javascript --language_in ECMASCRIPT_NEXT --language_out ECMASCRIPT_2017 --js frontend/release/index.js > frontend/public/index.min.js"
   }
 }
