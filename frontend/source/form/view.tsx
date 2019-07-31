@@ -40,8 +40,8 @@ export class View extends Control.Component<{}> {
     <form
 			id="contact"
 			class="form"
-			// onSubmit={this.submitHandler.bind(this)}
-			// onChange={this.handleChange.bind(this)}
+			onSubmit={this.submitHandler.bind(this)}
+			onChange={this.handleChange.bind(this)}
 		>
 			<div class="form--flex">
 				<div>
@@ -52,7 +52,7 @@ export class View extends Control.Component<{}> {
 						id="firstname"
 						placeholder="First name"
 						required
-						// onBlur={this.handleBlur.bind(this)}
+						onBlur={this.handleBlur.bind(this)}
 					/>
 				</div>
 
@@ -72,7 +72,7 @@ export class View extends Control.Component<{}> {
 				type="email"
 				id="email"
 				placeholder="example@juridoc.io"
-				// onBlur={this.handleBlur.bind(this)}
+				onBlur={this.handleBlur.bind(this)}
 			/>
 
 			<label id="phone">Phone</label>
@@ -90,7 +90,7 @@ export class View extends Control.Component<{}> {
 					<input type="password" 
 					name="password1" 
 					id="password1" 
-					// onBlur={this.handleBlur.bind(this)} 
+					onBlur={this.handleBlur.bind(this)} 
           />
 				</div>
 				<div>
@@ -113,7 +113,6 @@ export class View extends Control.Component<{}> {
 			<div class="container">{this.form}</div>
 		</div>
 	) as HTMLDivElement;
-
 
   /**
    * Default constructor.
@@ -139,7 +138,42 @@ export class View extends Control.Component<{}> {
   @Class.Private()
 	private handleInput(event: { target: HTMLInputElement }) {
 		event.target.value = this.masks[event.target.name](event.target.value);
+  }
+  
+  // Handleblur Listener
+  @Class.Private()
+	private handleBlur(event: { target: HTMLInputElement }) {
+		let regex;
+
+		// Validation name
+		if (event.target.name === 'first-name') {
+			regex = /^[A-Za-z0-9]+$/;
+			if (!regex.test(event.target.value)) {
+				console.log('O campo nome esta invalido');
+			}
+		}
+
+		// Validation domain email
+		if (event.target.name === 'email') {
+			regex = /^[a-z0-9](\.?[a-z0-9]){5,}@juridoc\.io$/;
+			if (!regex.test(event.target.value)) {
+				console.log('Email invalido');
+			}
+		}
+
+		if (event.target.name === 'password1') {
+			if (event.target.value.length < 6) {
+				console.log('senha precisa de 6 caracteres');	
+			}
+		}
 	}
+
+  //Change event field
+	@Class.Private()
+	private handleChange(event: { target: HTMLInputElement }) {
+		this.user[event.target.name] = event.target.value;
+	}
+
   /**
    * View element.
    */
