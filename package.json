@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.24",
-    "google-closure-compiler": "^20180805.0.0",
+    "google-closure-compiler-linux": "^20190709.0.0",
     "less": "^3.9.0",
     "prettier": "^1.16.4",
     "typescript": "^2.9.2"

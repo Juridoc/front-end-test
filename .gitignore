@@ -2,4 +2,6 @@
 backend/release/
 frontend/release/
 node_modules/
+*frontend/public/index.min.js
+
 !.gitignore
