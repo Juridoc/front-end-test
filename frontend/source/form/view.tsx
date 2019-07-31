@@ -81,7 +81,7 @@ export class View extends Control.Component<{}> {
 				for="phone"
 				name="phone"
 				placeholder="example (11) 945687456"
-				// onInput={this.handleInput.bind(this)}
+				onInput={this.handleInput.bind(this)}
 			/>
 
 			<div class="form--flex">
@@ -118,11 +118,28 @@ export class View extends Control.Component<{}> {
   /**
    * Default constructor.
    */
-  public constructor() {
-    super({});
-    // Some initialization here...
+  public constructor(private masks?: any, private user?: any, 
+		private toggle?: boolean | false ) {
+		super({});
+		// Some initialization here...
+		this.user = {};
+		this.masks = {
+			phone(value?: any) {
+				return value
+					.replace(/\D/g, '')
+					.replace(/(\d{2})(\d)/, '($1) $2')
+					.replace(/(\d{4})(\d)/, '$1-$2')
+					.replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+					.replace(/(-\d{4})\d+?$/, '$1');
+			},
+		};
   }
-
+  
+  // Event Mask Field
+  @Class.Private()
+	private handleInput(event: { target: HTMLInputElement }) {
+		event.target.value = this.masks[event.target.name](event.target.value);
+	}
   /**
    * View element.
    */
