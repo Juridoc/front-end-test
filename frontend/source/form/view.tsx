@@ -16,9 +16,36 @@ export class View extends Control.Component<{}> {
    * @param event Event information.
    */
   @Class.Private()
-  private submitHandler(event: Event): void {
+  private async submitHandler(event: Event) {
     event.preventDefault();
-    console.log('Form submitted');
+    const { firstname, lastname, email, phone, 
+    password1, password2 } = this.user;
+		const url = 'https://test.juridoc.io/register';
+		if (password1 !== password2) {
+			return;
+		}
+		const userData = {
+			firstname,
+			lastname,
+			email,
+			phone,
+			password1,
+			password2
+		};
+		
+			const config = {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(userData)
+			};
+			const response = await fetch(url, config)
+				.then(response => response.json())
+				.catch(e => {
+					console.log('ERRO..', e)
+				});		
   }
 
   	/**
