@@ -19,18 +19,21 @@ export class View extends Control.Component<{}> {
   private async submitHandler(event: Event) {
     event.preventDefault();
     const { firstname, lastname, email, phone, 
-    password1, password2 } = this.user;
+    password1, password2, username } = this.user;
 		const url = 'https://test.juridoc.io/register';
+
+		let password;
 		if (password1 !== password2) {
 			return;
 		}
+		password = password2;
 		const userData = {
 			firstname,
 			lastname,
-			email,
 			phone,
-			password1,
-			password2
+			email,
+			username,
+			password,
 		};
 		
 			const config = {
@@ -42,9 +45,14 @@ export class View extends Control.Component<{}> {
 				body: JSON.stringify(userData)
 			};
 			const response = await fetch(url, config)
-				.then(response => response.json())
+				.then((response) => {
+					if(response){
+						response.json();
+						alert('Account registered successfully !')
+					}
+				})
 				.catch(e => {
-					console.log('ERRO..', e)
+					console.log('ERROR..', e);
 				});		
   }
 
@@ -72,7 +80,7 @@ export class View extends Control.Component<{}> {
 		>
 			<div class="form--flex">
 				<div>
-					<label for="firstname">First name</label>
+					<label for="firstname">First name *</label>
 					<input
 						type="text"
 						name="firstname"
@@ -84,7 +92,7 @@ export class View extends Control.Component<{}> {
 				</div>
 
 				<div>
-					<label for="lastname">Last name</label>
+					<label for="lastname">Last name *</label>
 					<input type="text" id="lastname" name="lastname" 
 					placeholder="Last Name" required />
 				</div>
@@ -135,7 +143,6 @@ export class View extends Control.Component<{}> {
   @Class.Private()
 	private skeleton: HTMLDivElement = (
 		<div class="main">
-			{/* {!this.toggle && <div>Campo obrigatorio</div>} */}
 			{this.header}
 			<div class="container">{this.form}</div>
 		</div>
@@ -176,7 +183,7 @@ export class View extends Control.Component<{}> {
 		if (event.target.name === 'first-name') {
 			regex = /^[A-Za-z0-9]+$/;
 			if (!regex.test(event.target.value)) {
-				console.log('O campo nome esta invalido');
+				alert(`The  ${event.target.name} field is required...`)
 			}
 		}
 
@@ -184,13 +191,13 @@ export class View extends Control.Component<{}> {
 		if (event.target.name === 'email') {
 			regex = /^[a-z0-9](\.?[a-z0-9]){5,}@juridoc\.io$/;
 			if (!regex.test(event.target.value)) {
-				console.log('Email invalido');
+				alert(`The  ${event.target.name} field is required...`)
 			}
 		}
 
 		if (event.target.name === 'password1') {
 			if (event.target.value.length < 6) {
-				console.log('senha precisa de 6 caracteres');	
+				alert(`The password field is required...`)
 			}
 		}
 	}
