@@ -2,17 +2,60 @@
  * Copyright (C) 2018-2019 Juridoc
  * Form page view styles.
  */
-.panel {
-  display: block;
-  margin: auto;
-  width: 24rem;
-  margin-top: 10vh;
 
-  > .form {
-    border: 0.0625rem hsl(0, 0%, 50%) solid;
-
-    > .field {
-      margin: 1rem;
-    }
-  }
-}
+ @color-primary: #24589f;
+ @color-secondary : #fb5;
+ @color-white : #FFF;
+ @color-muted : #ccc;
+ 
+ .form {
+   max-width: 450px;
+   padding: 10px;
+   margin: 0 auto;
+   border: 10px solid @color-secondary;
+ }
+ 
+ .form label {
+   display: block;
+   margin: .5rem 0 .5rem 0;
+ }
+ 
+ .form input {
+   width: 100%;
+   padding: .7rem .5rem;
+   border: 1px solid @color-muted;
+ }
+ 
+ .form button[type="submit"] {
+   display: block;
+   background: @color-primary;
+   border: none;
+   border-radius: 4px;
+   padding: .7rem .5rem;
+   font-size: 1rem;
+   color: @color-white;
+   margin: 1rem auto;
+   font-family: 'IBM Plex Mono';
+   font-weight: bold;
+   cursor: pointer;
+ }
+ 
+ .form button[type="submit"]:disabled {
+   cursor: not-allowed;
+   background: none;
+   border: 1px solid @color-muted;
+   color: @color-primary;
+ }
+ 
+ .form--flex {
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+ }
+ 
+ @media (max-width : 720px) {
+   .form--flex {
+     display: block;
+   }
+ }
+ 

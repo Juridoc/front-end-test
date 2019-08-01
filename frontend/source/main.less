@@ -2,29 +2,44 @@
  * Copyright (C) 2018-209 Juridoc
  * Frontend styles.
  */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono');
 
+// Import general styles
+@import './form/container.less';
 @import './form/view.less';
 
-// General reset.
-*,
-::after,
-::before {
-  box-sizing: border-box;
-  outline: 0;
-}
 
-html {
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.125rem;
+// General reset.
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  position: absolute;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  font-size: 0.8125rem;
+	width: 100%;
+	height: 100vh;
+	font-family: 'IBM Plex Mono';
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.header {
+	padding: 10px;
+	min-height: 70px;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.6);
+}
+.logo {
+	width: 170px;
 }
